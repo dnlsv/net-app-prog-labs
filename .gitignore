@@ -1,0 +1,9 @@
+# Intellij IDEA #
+.idea
+out/
+target/
+*.iml
+
+# NetBeans#
+**/nbproject/private/
+**/build/
