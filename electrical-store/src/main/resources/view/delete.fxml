@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-
 <!--<?import javafx.scene.web.*?>-->
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane prefHeight="198.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.DeleteController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="198.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="org.example.controller.DeleteController">
     <children>
         <AnchorPane prefHeight="60.0" prefWidth="650.0" style="-fx-background-color: #2E3348;">
             <children>
-                <Label layoutX="226.0" layoutY="12.0" prefHeight="41.0" prefWidth="199.0" text="Удаление товара" textFill="WHITE">
+                <Label layoutX="226.0" layoutY="12.0" prefHeight="41.0" prefWidth="199.0" text="Удаление товара"
+                       textFill="WHITE">
                     <font>
-                        <Font name="System Italic" size="24.0" />
+                        <Font name="System Italic" size="24.0"/>
                     </font>
                 </Label>
             </children>
         </AnchorPane>
-      <Label layoutX="135.0" layoutY="92.0" text="Вы дейтсвительно хотите удалить данный товар?">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
-      <Button fx:id="yesButton" layoutX="231.0" layoutY="138.0" mnemonicParsing="false" onAction="#yesButtonAction" prefHeight="27.0" prefWidth="74.0" text="Да" />
-      <Button fx:id="noButton" layoutX="347.0" layoutY="138.0" mnemonicParsing="false" onAction="#noButtonAction" prefHeight="31.0" prefWidth="74.0" text="Нет" />
+        <Label layoutX="135.0" layoutY="92.0" text="Вы дейтсвительно хотите удалить данный товар?">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <Button fx:id="yesButton" layoutX="231.0" layoutY="138.0" mnemonicParsing="false" onAction="#yesButtonAction"
+                prefHeight="27.0" prefWidth="74.0" text="Да"/>
+        <Button fx:id="noButton" layoutX="347.0" layoutY="138.0" mnemonicParsing="false" onAction="#noButtonAction"
+                prefHeight="31.0" prefWidth="74.0" text="Нет"/>
     </children>
 </AnchorPane>

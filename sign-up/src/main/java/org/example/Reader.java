@@ -1,29 +1,29 @@
 package org.example;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Font;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class Reader extends JFrame {
+    static JLabel l1, l2, l3, l4, l5, l6, l7, l8;
+    static JButton clear, register;
+    static JTextField name, surname, number, login, password;
+    static String[] box1 = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+    static String[] box2 = {"январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"};
+    static String[] box3 = {"1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"};
+    static String[] box4 = {"Беларусь", "Россия", "Украина"};
     int flag;
     Object boxA, boxB, boxC, boxD;
     File file = new File("./src/main/resources/log.txt");
-    static JLabel l1, l2, l3, l4, l5, l6, l7, l8;
     JComboBox box_1, box_2, box_3, box_4;
     JRadioButton flag1, flag2;
     ButtonGroup bg;
-    static JButton clear, register;
-    static JTextField name, surname, number, login, password;
-    static String[] box1 = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
-    static String[] box2 = {"январь","февраль","март","апрель","май","июнь","июль","август","сентябрь","октябрь","ноябрь","декабрь"};
-    static String[] box3 = {"1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020"};
-    static String[] box4 = {"Беларусь","Россия","Украина"};
 
-    public Reader(String str){
+    public Reader(String str) {
         super(str);
         setSize(490, 540);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,25 +59,25 @@ public class Reader extends JFrame {
 
         setLayout(null);
 
-        l1.setSize(200,30);
+        l1.setSize(200, 30);
         l1.setLocation(30, 20);
         l1.setFont(fontB);
-        name.setSize(230,30);
+        name.setSize(230, 30);
         name.setLocation(210, 20);
         name.setFont(font);
 
         l2.setSize(220, 30);
         l2.setLocation(30, 70);
         l2.setFont(fontB);
-        surname.setSize(230,30);
+        surname.setSize(230, 30);
         surname.setLocation(210, 70);
         surname.setFont(font);
 
         l3.setSize(200, 30);
         l3.setLocation(30, 120);
         l3.setFont(fontB);
-        box_1.setSize(40,30);
-        box_1.setLocation(210,120);
+        box_1.setSize(40, 30);
+        box_1.setLocation(210, 120);
         box_1.setFont(font);
         box_2.setSize(100, 30);
         box_2.setLocation(260, 120);
@@ -89,7 +89,7 @@ public class Reader extends JFrame {
         l4.setSize(200, 30);
         l4.setLocation(30, 170);
         l4.setFont(fontB);
-        flag1.setSize(100,30);
+        flag1.setSize(100, 30);
         flag1.setLocation(210, 170);
         flag1.setFont(font);
         flag2.setSize(100, 30);
@@ -106,25 +106,25 @@ public class Reader extends JFrame {
         l6.setSize(200, 30);
         l6.setLocation(30, 270);
         l6.setFont(fontB);
-        number.setSize(220,30);
+        number.setSize(220, 30);
         number.setLocation(210, 270);
         number.setFont(font);
 
         l7.setSize(200, 30);
         l7.setLocation(30, 320);
         l7.setFont(fontB);
-        login.setSize(220,30);
+        login.setSize(220, 30);
         login.setLocation(210, 320);
         login.setFont(font);
 
         l8.setSize(200, 30);
         l8.setLocation(30, 370);
         l8.setFont(fontB);
-        password.setSize(220,30);
+        password.setSize(220, 30);
         password.setLocation(210, 370);
         password.setFont(font);
 
-        clear.setSize(120,40);
+        clear.setSize(120, 40);
         clear.setLocation(30, 435);
         clear.setFont(font);
         register.setSize(220, 40);
@@ -165,27 +165,27 @@ public class Reader extends JFrame {
 
     public class ButtonActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            try{
-                if(!file.exists()){
+            try {
+                if (!file.exists()) {
                     file.createNewFile();
                 }
                 FileWriter out = new FileWriter(file, true);
-                try{
+                try {
                     out.write(name.getText() + " ");
                     out.write(surname.getText() + "\n");
                     out.write("Дата рождения: " + boxA + " " + boxB + " " + boxC + "\n");
-                    if(flag == 1)
+                    if (flag == 1)
                         out.write("Пол: мужской " + "\n");
-                    else if(flag == -1)
+                    else if (flag == -1)
                         out.write("Пол: женский " + "\n");
                     out.write("Страна: " + boxD + "\n");
                     out.write("Телефон: " + number.getText() + "\n");
                     out.write("Логин: " + login.getText() + "\n");
                     out.write("Пароль: " + password.getText() + "\n\n");
-                } finally{
+                } finally {
                     out.close();
                 }
-            }catch(IOException e1){
+            } catch (IOException e1) {
                 throw new RuntimeException(e1);
             }
         }
@@ -194,18 +194,17 @@ public class Reader extends JFrame {
     public class FlagActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             flag = 0;
-            if(e.getSource() == flag1){
+            if (e.getSource() == flag1) {
                 flag++;
-            }
-            else if(e.getSource() == flag2){
+            } else if (e.getSource() == flag2) {
                 flag--;
             }
         }
     }
 
-    public class ClearActionListener implements ActionListener{
+    public class ClearActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if(e.getSource() == clear){
+            if (e.getSource() == clear) {
                 name.setText(null);
                 surname.setText(null);
                 number.setText(null);
@@ -220,18 +219,18 @@ public class Reader extends JFrame {
         }
     }
 
-    public class BoxActionListener implements ActionListener{
+    public class BoxActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if(e.getSource() == box_1){
+            if (e.getSource() == box_1) {
                 boxA = box_1.getSelectedItem();
             }
-            if(e.getSource() == box_2){
+            if (e.getSource() == box_2) {
                 boxB = box_2.getSelectedItem();
             }
-            if(e.getSource() == box_3){
+            if (e.getSource() == box_3) {
                 boxC = box_3.getSelectedItem();
             }
-            if(e.getSource() == box_4){
+            if (e.getSource() == box_4) {
                 boxD = box_4.getSelectedItem();
             }
         }

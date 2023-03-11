@@ -25,17 +25,7 @@ public class Race {
         this.prize = obj.prize;
     }
 
-    public String getDate() {
-        return date;
-    }
-    public int getQuantity() {
-        return quantity;
-    }
-    public boolean getPrize() {
-        return prize;
-    }
-
-    public static int Quantity(Race []race) {
+    public static int Quantity(Race[] race) {
         int count = 0;
         for (int i = 0; i < 5; i++) {
             count += race[i].quantity;
@@ -43,12 +33,24 @@ public class Race {
         return count;
     }
 
-    public static int hasPrize(Race []race) {
+    public static int hasPrize(Race[] race) {
         int count = 0;
         for (int i = 0; i < 5; i++)
-            if (race[i].prize == true)
+            if (race[i].prize)
                 count++;
         return count;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public boolean getPrize() {
+        return prize;
     }
 
     public void print() {

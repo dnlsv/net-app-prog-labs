@@ -12,7 +12,7 @@ public class DatabaseConnection {
 
     private Connection connection;
 
-    public DatabaseConnection(){
+    public DatabaseConnection() {
         try {
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -21,7 +21,7 @@ public class DatabaseConnection {
         }
     }
 
-    public Connection getDatabaseConnection(){
+    public Connection getDatabaseConnection() {
         return connection;
     }
 

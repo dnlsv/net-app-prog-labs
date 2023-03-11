@@ -1,10 +1,23 @@
 package org.example;
-import java.net.*;
-import java.io.*;
-import java.util.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.util.Scanner;
 
 public class Server {
     public final static int DEFAULT_PORT = 8001;
+
+    public static void main(String[] args) {
+        try {
+            Server udpSvr = new Server();
+            udpSvr.runServer();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     public void runServer() throws IOException {
         DatagramSocket s = null;
@@ -17,7 +30,7 @@ public class Server {
             s.receive(recvPacket);
             String cmd = new String(recvPacket.getData()).trim();
             DatagramPacket sendPacket = new DatagramPacket(buf, 0, recvPacket.getAddress(), recvPacket.getPort());                                                                 // дейтаграммы для отсылки данных
-            int n = 0, count =0, x = 0, y = 0, z = 0;
+            int n = 0, count = 0, x = 0, y = 0, z = 0;
             try (Scanner ss = new Scanner(cmd)) {
                 while (ss.hasNextInt()) {
                     if (count == 0) {
@@ -34,9 +47,9 @@ public class Server {
             }
             System.out.println("UDPServer: x = " + x + ", y = " + y + ", z = " + z);
             double res = 0;
-            res = Math.pow(y, x) + Math.sqrt(Math.abs(x) + Math.pow(Math.E, y))- Math.pow(z,3)*Math.pow(Math.sin(y), 2)/(y + Math.pow(z,3)/(y-Math.pow(z,3)));
+            res = Math.pow(y, x) + Math.sqrt(Math.abs(x) + Math.pow(Math.E, y)) - Math.pow(z, 3) * Math.pow(Math.sin(y), 2) / (y + Math.pow(z, 3) / (y - Math.pow(z, 3)));
             String result = Double.toString(res);
-            byte []resB;
+            byte[] resB;
             resB = result.getBytes();
             n = resB.length;
             System.arraycopy(resB, 0, buf, 0, n);
@@ -55,15 +68,6 @@ public class Server {
             if (s != null) {
                 s.close();
             }
-        }
-    }
-
-    public static void main(String[] args) {
-        try {
-            Server udpSvr = new Server();
-            udpSvr.runServer();
-        } catch (IOException ex) {
-            ex.printStackTrace();
         }
     }
 }

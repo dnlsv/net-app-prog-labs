@@ -1,7 +1,7 @@
 package org.example;
 
-public class Mother extends Parent{
-    public Mother(int _kids, String _work){
+public class Mother extends Parent {
+    public Mother(int _kids, String _work) {
         super(_kids, _work);
     }
 
@@ -17,10 +17,10 @@ public class Mother extends Parent{
     }
 
     public void printInfo() {
-        System.out.println("\nКоличество детей: " + getKids() + "\nМесто работы: " + getWork() +"\nИмя матери: " + Name());
+        System.out.println("\nКоличество детей: " + getKids() + "\nМесто работы: " + getWork() + "\nИмя матери: " + Name());
     }
 
-    public String getWork(){
+    public String getWork() {
         return work;
     }
 }

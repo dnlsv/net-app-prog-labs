@@ -10,12 +10,12 @@ import java.util.ArrayList;
 
 public class ProductTable {
 
-    private Connection connection;
+    private final Connection connection;
     private Statement statement;
     private ArrayList<Product> arrayList;
     private ResultSet resultSet;
 
-    public ProductTable(Connection connection){
+    public ProductTable(Connection connection) {
         this.connection = connection;
         try {
             statement = connection.createStatement();
@@ -24,12 +24,12 @@ public class ProductTable {
         }
     }
 
-    public ArrayList<Product> getProductTable(){
+    public ArrayList<Product> getProductTable() {
         arrayList = new ArrayList<Product>();
         try {
             resultSet = statement.executeQuery("SELECT * FROM store.product;");
 
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 Product product = new Product(resultSet.getInt(1), resultSet.getString(2),
                         resultSet.getString(3), resultSet.getString(4),
                         resultSet.getInt(5), resultSet.getDate(6),

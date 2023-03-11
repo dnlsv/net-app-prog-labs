@@ -1,18 +1,19 @@
 package org.example;
 
-public class Teenager implements Object,Human{
-    private int school;
+public class Teenager implements Object, Human {
     double progress;
+    private final int school;
 
-    public Teenager(int _school, double _progress){
+    public Teenager(int _school, double _progress) {
         this.school = _school;
         this.progress = _progress;
     }
 
-    public int getSchool(){
+    public int getSchool() {
         return school;
     }
-    public double getProgress(){
+
+    public double getProgress() {
         return progress;
     }
 
@@ -28,6 +29,6 @@ public class Teenager implements Object,Human{
     }
 
     public void printInfo() {
-        System.out.println("\nНомер школы: " + getSchool() + "\nУспеваемость: " + getProgress() +"\nИмя подростка: " + Name());
+        System.out.println("\nНомер школы: " + getSchool() + "\nУспеваемость: " + getProgress() + "\nИмя подростка: " + Name());
     }
 }

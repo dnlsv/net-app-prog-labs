@@ -19,32 +19,38 @@ public class Race {
         quantity = q;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-    public void setPrize(boolean prize) {
-        this.prize = prize;
-    }
-
     public String getDate() {
         return date;
     }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public int getQuantity() {
         return quantity;
     }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public boolean getPrize() {
         return prize;
     }
 
-    public void printDate(){
+    public void setPrize(boolean prize) {
+        this.prize = prize;
+    }
+
+    public void printDate() {
         System.out.println("Дата соревнования: " + date);
     }
-    public void printQuantity(){
+
+    public void printQuantity() {
         System.out.println("Количество участников: " + quantity);
     }
+
     public void printPrize() {
         if (prize) {
             System.out.println("Есть приз.");

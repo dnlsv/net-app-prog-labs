@@ -1,23 +1,16 @@
 package org.example;
 
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicOptionPaneUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.*;
 
 public class Reader extends JFrame {
+    static JButton zero, one, two, three, four, five, six, seven, eight, nine, sum, sub, mul, div, memory, mread, erase, sign, point, equality;
+    static JTextField text;
     String mem;
     double a, b;
     boolean flagSum = false, flagSub = false, flagMul = false, flagDiv = false;
-    static JButton zero, one, two, three, four, five, six, seven, eight, nine, sum, sub, mul, div, memory, mread, erase, sign, point, equality;
-    static JTextField text;
 
     public Reader(String str) {
         super(str);
@@ -191,10 +184,10 @@ public class Reader extends JFrame {
         public void actionPerformed(ActionEvent e) {
             String number;
             number = text.getText();
-            if(number.charAt(0) != '-')
+            if (number.charAt(0) != '-')
                 number = "-" + text.getText();
             else
-                number = number.substring(1, number.length());
+                number = number.substring(1);
             text.setText(number);
         }
     }
@@ -235,19 +228,19 @@ public class Reader extends JFrame {
         public void actionPerformed(ActionEvent e) {
             double result = 0;
             b = Double.parseDouble(text.getText());
-            if (flagSum){
+            if (flagSum) {
                 result = a + b;
                 flagSum = false;
             }
-            if (flagSub){
+            if (flagSub) {
                 result = a - b;
                 flagSub = false;
             }
-            if (flagMul){
+            if (flagMul) {
                 result = a * b;
                 flagMul = false;
             }
-            if (flagDiv){
+            if (flagDiv) {
                 result = a / b;
                 flagDiv = false;
             }

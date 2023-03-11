@@ -13,7 +13,7 @@ public class Product {
     private int productPrice;
 
     public Product(int productID, String productName, String productProducer, String productCharacteristic,
-                   int productQuantity, Date productDate, int productPrice){
+                   int productQuantity, Date productDate, int productPrice) {
         this.productID = productID;
         this.productName = productName;
         this.productProducer = productProducer;
@@ -21,7 +21,7 @@ public class Product {
         this.productQuantity = productQuantity;
         this.productDate = productDate;
         this.productPrice = productPrice;
-    };
+    }
 
     public int getProductID() {
         return productID;

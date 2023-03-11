@@ -1,15 +1,15 @@
 package org.example.controller;
 
-import java.net.URL;
-import java.sql.Date;
-import java.util.ResourceBundle;
-
-import org.example.database.DatabaseConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.example.database.DatabaseConnection;
 import org.example.model.Product;
+
+import java.net.URL;
+import java.sql.Date;
+import java.util.ResourceBundle;
 
 public class AddController {
 
@@ -62,7 +62,7 @@ public class AddController {
 
     }
 
-    public void dialogWindow(String message, String title){
+    public void dialogWindow(String message, String title) {
         Alert alert = new Alert(Alert.AlertType.NONE, message, ButtonType.OK);
         alert.setTitle(title);
         alert.showAndWait();

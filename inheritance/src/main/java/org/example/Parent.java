@@ -1,34 +1,36 @@
 package org.example;
 
 public class Parent extends Human {
-    private int kids;
     String work;
+    private final int kids;
 
-    public Parent(){
+    public Parent() {
         super();
         kids = 0;
         work = "";
     }
-    public Parent(String _FIO, String _gender, int _age, int _kids, String _work){
+
+    public Parent(String _FIO, String _gender, int _age, int _kids, String _work) {
         super(_FIO, _gender, _age);
         kids = _kids;
         work = _work;
     }
 
-    public int getKids(){
+    public int getKids() {
         return kids;
     }
-    public String getWork(){
+
+    public String getWork() {
         return work;
     }
 
     public void Name() {
         String name = "";
-        for (int i = 0; i < FIO.length(); i++){
+        for (int i = 0; i < FIO.length(); i++) {
             name = name + FIO.charAt(i);
             if (FIO.charAt(i) == ' ')
                 break;
         }
-        System.out.println("Имя родитля: "+ name);
+        System.out.println("Имя родитля: " + name);
     }
 }

@@ -1,7 +1,7 @@
 package org.example;
 
-public class Kid implements Object,Human {
-    private int kindergarten;
+public class Kid implements Object, Human {
+    private final int kindergarten;
 
     public Kid(int _kindergarten) {
         this.kindergarten = _kindergarten;
@@ -23,7 +23,7 @@ public class Kid implements Object,Human {
     }
 
     public void printInfo() {
-        System.out.println("\nНомер детского сада: " + getKindergarten() + "\nИмя ребенка: " + Name()          );
+        System.out.println("\nНомер детского сада: " + getKindergarten() + "\nИмя ребенка: " + Name());
     }
 }
 

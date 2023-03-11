@@ -1,9 +1,21 @@
 package org.example;
-import java.net.*;
-import java.io.*;
+
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.util.Scanner;
 
 public class Client {
+    public static void main(String[] args) {
+        try {
+            Client client = new Client();
+            client.runClient();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void runClient() throws IOException {
         DatagramSocket s = null;
         try {
@@ -26,18 +38,10 @@ public class Client {
             System.out.println("UDPClient: Function Result: " + result);
 
             System.out.println("UDPClient: Ended");
-        }
-        finally {
+        } finally {
             if (s != null) {
                 s.close();
-            }  }  }
-    public static void main(String[] args) {
-        try {
-            Client client = new Client();
-            client.runClient();
-        }
-        catch(IOException ex) {
-            ex.printStackTrace();
+            }
         }
     }
 

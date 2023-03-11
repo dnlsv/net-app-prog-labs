@@ -11,12 +11,12 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class ServerThread extends Thread{
+public class ServerThread extends Thread {
 
-    private ObjectOutputStream outputStream;
-    private ObjectInputStream inputStream;
-    private InetAddress inetAddress;
-    private int counter;
+    private final ObjectOutputStream outputStream;
+    private final ObjectInputStream inputStream;
+    private final InetAddress inetAddress;
+    private final int counter;
     private String clientMessage;
 
 
@@ -48,7 +48,7 @@ public class ServerThread extends Thread{
             try {
                 str = (String) this.inputStream.readObject();
                 System.out.println(str);
-                if(str.equals("123")){
+                if (str.equals("123")) {
                     DatabaseConnection connection = new DatabaseConnection();
                     ProductTable productTable = new ProductTable(connection.getDatabaseConnection());
                     ArrayList<Product> arrayList = productTable.getProductTable();

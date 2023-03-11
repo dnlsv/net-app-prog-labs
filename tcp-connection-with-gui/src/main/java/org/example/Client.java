@@ -1,26 +1,38 @@
 package org.example;
 
-import java.awt.Button;
-import java.awt.Frame;
-import java.awt.Label;
-import java.awt.TextArea;
-import java.awt.TextField;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
 
 class Client extends Frame implements ActionListener, WindowListener {
     TextField tf, tf1, tf2;
     TextArea ta;
     Label la, la1, la2, la3, la4;
-    Socket cSocket  = null;
-    InputStream cInput  = null;
-    OutputStream   cOutput  = null;
+    Socket cSocket = null;
+    InputStream cInput = null;
+    OutputStream cOutput = null;
+    ActionListener al = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            try {
+                cSocket = new Socket(InetAddress.getByName(tf.getText()), Integer.parseInt(tf1.getText()));
+            } catch (NumberFormatException e) {
+            } catch (UnknownHostException e) {
+            } catch (IOException e) {
+            }
+        }
+    };
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Client abc = new Client();
         abc.GUI();
     }
@@ -79,59 +91,60 @@ class Client extends Frame implements ActionListener, WindowListener {
     }
 
     public void windowClosing(WindowEvent we) {
-        if (cSocket  != null && !cSocket .isClosed()) {
+        if (cSocket != null && !cSocket.isClosed()) {
             try {
-                cSocket .close();
+                cSocket.close();
             } catch (IOException e) {
             }
         }
         this.dispose();
     }
 
-    public void windowActivated(WindowEvent we) {} ;
-    public void windowClosed(WindowEvent we) {};
-    public void windowDeactivated(WindowEvent we) {};
-    public void windowDeiconified(WindowEvent we) {} ;
-    public void windowIconified(WindowEvent we) {};
-    public void windowOpened(WindowEvent we) { } ;
+    public void windowActivated(WindowEvent we) {
+    }
+
+    public void windowClosed(WindowEvent we) {
+    }
+
+    public void windowDeactivated(WindowEvent we) {
+    }
+
+    public void windowDeiconified(WindowEvent we) {
+    }
+
+    public void windowIconified(WindowEvent we) {
+    }
+
+    public void windowOpened(WindowEvent we) {
+    }
+
     public void actionPerformed(ActionEvent e) {
         if (cSocket == null) {
             return;
         }
         try {
-            cInput  = cSocket .getInputStream();
-            cOutput  = cSocket .getOutputStream();
+            cInput = cSocket.getInputStream();
+            cOutput = cSocket.getOutputStream();
             String str = "";
             str += tf2.getText();
-            cOutput .write(str.getBytes());
+            cOutput.write(str.getBytes());
             byte[] bytes = new byte[1024];
-            cInput .read(bytes);
-            String resultStr = new String(bytes, "UTF-8");
+            cInput.read(bytes);
+            String resultStr = new String(bytes, StandardCharsets.UTF_8);
             ta.append(resultStr + "\n");
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
             try {
-                cOutput .close();
-                cInput .close();
-                cSocket .close();
+                cOutput.close();
+                cInput.close();
+                cSocket.close();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
         }
     }
 
-    public void actionPerformed2(ActionEvent e) {}
-    ActionListener al = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent arg0) {
-            try {
-                cSocket  = new Socket(InetAddress.getByName(tf.getText()), Integer.parseInt(tf1.getText()));
-            } catch (NumberFormatException e) {
-            } catch (UnknownHostException e) {
-            } catch (IOException e) {
-            }
-        }
-    };
+    public void actionPerformed2(ActionEvent e) {
+    }
 }

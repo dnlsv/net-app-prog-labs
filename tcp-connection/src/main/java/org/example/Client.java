@@ -1,10 +1,13 @@
 package org.example;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 
 public class Client {
-    public static void main(String[] arg){
+    public static void main(String[] arg) {
         try {
             System.out.println("Подключение к серверу...");
             Socket cSocket = new Socket("127.0.01", 2524);
@@ -20,7 +23,7 @@ public class Client {
             cInput.close();
             cOutput.close();
             cSocket.close();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

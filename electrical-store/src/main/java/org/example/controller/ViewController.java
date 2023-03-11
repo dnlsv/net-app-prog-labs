@@ -1,11 +1,5 @@
 package org.example.controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Date;
-import java.util.ResourceBundle;
-
-import org.example.database.DatabaseConnection;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +10,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.example.database.DatabaseConnection;
 import org.example.model.Product;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Date;
+import java.util.ResourceBundle;
 
 public class ViewController {
 
@@ -76,12 +76,12 @@ public class ViewController {
 
     @FXML
     void tableAction(MouseEvent event) {
-        product =  productTable.getSelectionModel().selectedItemProperty().get();
+        product = productTable.getSelectionModel().selectedItemProperty().get();
     }
 
     @FXML
     void editButtonAction(ActionEvent event) {
-        if(product != null) {
+        if (product != null) {
             editButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/edit.fxml"));
@@ -101,14 +101,13 @@ public class ViewController {
             stage.setOnHidden(e -> initialize());
             stage.setScene(new Scene(root));
             stage.showAndWait();
-        }
-        else
+        } else
             dialogWindow("Выберите товар!", "Information");
     }
 
     @FXML
     void deleteButtonAction(ActionEvent event) {
-        if(product != null) {
+        if (product != null) {
             deleteButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/delete.fxml"));
@@ -128,8 +127,7 @@ public class ViewController {
             stage.setOnHidden(e -> initialize());
             stage.setScene(new Scene(root));
             stage.showAndWait();
-        }
-        else
+        } else
             dialogWindow("Выберите товар!", "Information");
     }
 
@@ -144,7 +142,7 @@ public class ViewController {
         productTable.setItems(FXCollections.observableArrayList(databaseConnection.getProductList()));
     }
 
-    public void dialogWindow(String message, String title){
+    public void dialogWindow(String message, String title) {
         Alert alert = new Alert(Alert.AlertType.NONE, message, ButtonType.OK);
         alert.setTitle(title);
         alert.showAndWait();

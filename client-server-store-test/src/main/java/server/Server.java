@@ -15,7 +15,7 @@ public class Server {
             ServerSocket serverSocket = new ServerSocket(2524);
             System.out.println("Server started...");
 
-            while (true){
+            while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.println(socket.getInetAddress().getHostName() + " connected");
                 counter++;

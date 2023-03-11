@@ -1,9 +1,12 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 
 public class WordSearch {
 
-    private String getText(){
+    private String getText() {
 
         URL resource = getClass().getClassLoader().getResource("searchHere.txt");
         String file = resource.getFile();
@@ -26,10 +29,10 @@ public class WordSearch {
         return str;
     }
 
-    public int wordSearch(String substring){
+    public int wordSearch(String substring) {
         String str = getText();
         int count = 0;
-        while(str.contains(substring) != false) {
+        while (str.contains(substring) != false) {
             if (str.indexOf(substring) != -1) {
                 count++;
                 str = str.substring(str.indexOf(substring) + substring.length(), str.length());
